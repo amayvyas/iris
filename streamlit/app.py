@@ -2,9 +2,13 @@ import streamlit as st
 import numpy as np
 import pickle
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
+
 @st.cache_resource
 def load_pickle_model():
-    with open('iris_model.pkl', 'rb') as f:
+    with open(BASE_DIR / "iris_model.pkl", "rb") as f:
         model, target_names = pickle.load(f)
     return model, target_names
 
